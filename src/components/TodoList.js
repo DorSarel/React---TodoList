@@ -6,11 +6,13 @@ const TodoList = (props) => {
   return (
     <ul className="todo-list">
 
-      {props.tasks.map((task, index) => {
+      {props.tasks.map((task) => {
         return (
           <TodoListItem
             name={task.name}
-            key={index} />
+            isDone={task.isDone}
+            key={task.id}
+            setAsComplete={ () => {props.setAsComplete(task.id)} }/>
         );
       })}
 
@@ -20,6 +22,7 @@ const TodoList = (props) => {
 
 TodoList.PropTypes = {
   tasks: PropTypes.array.isRequired,
+  setAsComplete: PropTypes.func.isRequired
 }
 
 export default TodoList;

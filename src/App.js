@@ -7,11 +7,16 @@ class App extends Component {
 
   state = {
     pendingTask: "",
-    tasks: [
-
-    ]
+    tasks: []
   }
 
+  lastTaskId = 0;
+
+  newTaskId = () => {
+    const id = this.lastTaskId;
+    this.lastTaskId += 1;
+    return id;
+  }
 
   getActiveTasks = () => {
     return (
@@ -29,16 +34,34 @@ class App extends Component {
 
   addNewTask = (e) => {
     e.preventDefault();
+    const id = this.newTaskId();
 
     this.setState({
       pendingTask: "",
       tasks: [
         {
           name: this.state.pendingTask,
-          isDone: false
+          isDone: false,
+          isEditable: false,
+          id
         },
         ...this.state.tasks
       ]
+    });
+  }
+
+  setAsCompleteId = (id) => {
+    this.setState({
+      tasks: this.state.tasks.map((task) => {
+        if (id === task.id) {
+          return {
+            ...task,
+            isDone: !task.isDone
+          };
+        }
+
+        return task;
+      })
     });
   }
 
@@ -56,7 +79,8 @@ class App extends Component {
           addNewTask={this.addNewTask} />
 
         <TodoList
-          tasks={this.state.tasks} />
+          tasks={this.state.tasks}
+          setAsComplete={this.setAsCompleteId} />
       </div>
     );
   }

@@ -7,6 +7,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1em;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -40,13 +41,19 @@ ul {
   box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75), -1px 0px 5px 0 rgba(0, 0, 0, .55);
 }
 
-ul > .todo-list-item {
+.todo-list-item {
   font-size: 1.25em;
-  padding: 8px 0 4px 10px;
+  padding: 8px 0 8px 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
-ul > .todo-list-item:nth-child(odd) {
+.todo-list-item:nth-child(odd) {
   background: rgba(0, 0, 0, .2);
+}
+
+.todo-list-item_actions > i {
+  margin-right: 8px;
 }
 
 form {
@@ -62,4 +69,8 @@ input[type="text"] {
 
 input:focus {
   outline: none;
+}
+
+.task-done {
+  text-decoration: line-through;
 }
