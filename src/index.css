@@ -25,16 +25,12 @@ body {
 header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 30px;
 }
 
 header > h2 {
   margin: 0;
-  flex: 3 1 60%;
-}
-
-header > span {
-  flex: 1 1 40%;
 }
 
 ul {
