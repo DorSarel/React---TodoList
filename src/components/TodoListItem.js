@@ -12,7 +12,7 @@ const TodoListItem = (props) => {
 
       <div className="todo-list-item_actions">
         <i className="fa fa-check-square-o" aria-hidden="true" onClick={props.setAsComplete}></i>
-        <i className="fa fa-trash-o" aria-hidden="true"></i>
+        <i className="fa fa-trash-o" aria-hidden="true" onClick={props.removeTask}></i>
         <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
       </div>
     </li>
@@ -22,7 +22,8 @@ const TodoListItem = (props) => {
 TodoListItem.PropTypes = {
   name: PropTypes.string.isRequired,
   isDone: PropTypes.bool.isRequired,
-  setAsComplete: PropTypes.func.isRequired
+  setAsComplete: PropTypes.func.isRequired,
+  removeTask: PropTypes.func.isRequired
 }
 
 export default TodoListItem;

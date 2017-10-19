@@ -12,7 +12,8 @@ const TodoList = (props) => {
             name={task.name}
             isDone={task.isDone}
             key={task.id}
-            setAsComplete={ () => {props.setAsComplete(task.id)} }/>
+            setAsComplete={ () => {props.setAsComplete(task.id)} }
+            removeTask={ () => {props.removeTaskFrom(task.id)} } />
         );
       })}
 
@@ -22,7 +23,8 @@ const TodoList = (props) => {
 
 TodoList.PropTypes = {
   tasks: PropTypes.array.isRequired,
-  setAsComplete: PropTypes.func.isRequired
+  setAsComplete: PropTypes.func.isRequired,
+  removeTaskFrom: PropTypes.func.isRequired
 }
 
 export default TodoList;

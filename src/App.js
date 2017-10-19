@@ -65,6 +65,14 @@ class App extends Component {
     });
   }
 
+  removeTaskFrom = (id) => {
+    this.setState({
+      tasks: this.state.tasks.filter((task) => {
+        return task.id !== id;
+      })
+    });
+  }
+
   render() {
     const activeTasks = this.getActiveTasks()
 
@@ -80,7 +88,8 @@ class App extends Component {
 
         <TodoList
           tasks={this.state.tasks}
-          setAsComplete={this.setAsCompleteId} />
+          setAsComplete={this.setAsCompleteId}
+          removeTaskFrom={this.removeTaskFrom} />
       </div>
     );
   }
