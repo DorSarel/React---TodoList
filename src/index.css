@@ -19,7 +19,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 400px;
+  max-width: 900px;
   margin: 200px auto;
 }
 
@@ -34,36 +34,45 @@ header > h2 {
   margin: 0;
 }
 
-ul {
+.list-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-container-child {
+  flex: 1 1 33%;
+  margin-right: 30px;
+}
+
+.list-container-child > ul {
+  width: 80%;
+  list-style: none;
+  padding-left: 0;
+  -webkit-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75), -1px 0px 5px 0 rgba(0, 0, 0, .55);
+  box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75), -1px 0px 5px 0 rgba(0, 0, 0, .55);
+  background: rgba(0, 0, 0, .4);
+}
+
+/*ul {
   list-style-type: none;
   padding-left: 0;
   -webkit-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75), -1px 0px 5px 0 rgba(0, 0, 0, .55);
   box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75), -1px 0px 5px 0 rgba(0, 0, 0, .55);
-}
+}*/
 
 .todo-list-item {
-  font-size: 1.25em;
-  padding: 8px 0 8px 10px;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+
+  padding: 10px 8px 10px 10px;
+  margin-bottom: 5px;
+
+  border-bottom: 1px solid rgba(0, 0, 0, .3);
 }
 
-.todo-list-item:nth-child(odd) {
-  background: rgba(0, 0, 0, .2);
-}
-
-.todo-list-item_name {
-  flex: 1 1 80%;
-}
-
-.todo-list-item_actions {
-  flex: 1 1 10%;
-  align-content: flex-end;
-}
-
-.todo-list-item_actions > i {
-  margin-right: 8px;
+.todo-list-item > span {
+  flex: 1 1 100%;
+  margin-bottom: 30px;
 }
 
 .todo-list-item_date {
@@ -76,12 +85,10 @@ form {
 }
 
 input[type="text"] {
-  width: 100%;
+  margin: 0 auto;
   padding: 15px 12px;
   border: 1px dashed #333;
   font-size: 1.125em;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
 }
 
 input:focus {
@@ -90,4 +97,14 @@ input:focus {
 
 .task-done {
   text-decoration: line-through;
+}
+
+.btn {
+  border-radius: 10px;
+  outline: none;
+  background: white;
+  border: none;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, .4);
+  padding: 10px 8px;
+  margin-right: 5px;
 }

@@ -4,27 +4,28 @@ import TodoListItem from "./TodoListItem";
 
 const TodoList = (props) => {
   return (
-    <ul className="todo-list">
+    <div className="list-container-child">
+      <h3>Todo:</h3>
+      <ul>
 
-      {props.tasks.map((task) => {
-        return (
-          <TodoListItem
-            name={task.name}
-            isDone={task.isDone}
-            createdAt={task.createdAt}
-            key={task.id}
-            setAsComplete={ () => {props.setAsComplete(task.id)} }
-            removeTask={ () => {props.removeTaskFrom(task.id)} } />
-        );
-      })}
+        {props.tasks.filter( task => task.isTodo )
+          .map((task) => {
+          return (
+            <TodoListItem
+              name={task.name}
+              createdAt={task.createdAt}
+              key={task.id}
+              removeTask={ () => {props.removeTaskFrom(task.id)} } />
+          );
+        })}
 
-    </ul>
+      </ul>
+    </div>
   );
 }
 
 TodoList.PropTypes = {
   tasks: PropTypes.array.isRequired,
-  setAsComplete: PropTypes.func.isRequired,
   removeTaskFrom: PropTypes.func.isRequired
 }
 

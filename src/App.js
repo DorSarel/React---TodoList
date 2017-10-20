@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from "./components/Header";
 import TaskInput from "./components/TaskInput";
-import TodoList from "./components/TodoList";
+import ListContainer from "./components/ListContainer";
 
 class App extends Component {
 
@@ -41,8 +41,9 @@ class App extends Component {
       tasks: [
         {
           name: this.state.pendingTask,
+          isTodo: true,
+          isInProgress: false,
           isDone: false,
-          isEditable: false,
           createdAt: Date.now(),
           id
         },
@@ -87,10 +88,11 @@ class App extends Component {
           pendingTask={this.state.pendingTask}
           addNewTask={this.addNewTask} />
 
-        <TodoList
+        <ListContainer
           tasks={this.state.tasks}
-          setAsComplete={this.setAsCompleteId}
+          setAsCompleteId={this.setAsCompleteId}
           removeTaskFrom={this.removeTaskFrom} />
+
       </div>
     );
   }
