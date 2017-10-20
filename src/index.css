@@ -80,6 +80,8 @@ input[type="text"] {
   padding: 15px 12px;
   border: 1px dashed #333;
   font-size: 1.125em;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 }
 
 input:focus {
