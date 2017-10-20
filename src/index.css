@@ -46,14 +46,29 @@ ul {
   padding: 8px 0 8px 10px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .todo-list-item:nth-child(odd) {
   background: rgba(0, 0, 0, .2);
 }
 
+.todo-list-item_name {
+  flex: 1 1 80%;
+}
+
+.todo-list-item_actions {
+  flex: 1 1 10%;
+  align-content: flex-end;
+}
+
 .todo-list-item_actions > i {
   margin-right: 8px;
+}
+
+.todo-list-item_date {
+  font-size: .75em;
+  font-style: italic;
 }
 
 form {

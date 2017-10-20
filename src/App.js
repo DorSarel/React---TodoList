@@ -43,6 +43,7 @@ class App extends Component {
           name: this.state.pendingTask,
           isDone: false,
           isEditable: false,
+          createdAt: Date.now(),
           id
         },
         ...this.state.tasks

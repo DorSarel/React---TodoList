@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 
 const TodoListItem = (props) => {
   return (
@@ -13,7 +14,10 @@ const TodoListItem = (props) => {
       <div className="todo-list-item_actions">
         <i className="fa fa-check-square-o" aria-hidden="true" onClick={props.setAsComplete}></i>
         <i className="fa fa-trash-o" aria-hidden="true" onClick={props.removeTask}></i>
-        <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </div>
+
+      <div className="todo-list-item_date">
+        {moment(props.createdAt).fromNow()}
       </div>
     </li>
   );
@@ -23,7 +27,8 @@ TodoListItem.PropTypes = {
   name: PropTypes.string.isRequired,
   isDone: PropTypes.bool.isRequired,
   setAsComplete: PropTypes.func.isRequired,
-  removeTask: PropTypes.func.isRequired
+  removeTask: PropTypes.func.isRequired,
+  createdAt: PropTypes.object.isRequired
 }
 
 export default TodoListItem;

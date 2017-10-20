@@ -11,6 +11,7 @@ const TodoList = (props) => {
           <TodoListItem
             name={task.name}
             isDone={task.isDone}
+            createdAt={task.createdAt}
             key={task.id}
             setAsComplete={ () => {props.setAsComplete(task.id)} }
             removeTask={ () => {props.removeTaskFrom(task.id)} } />
