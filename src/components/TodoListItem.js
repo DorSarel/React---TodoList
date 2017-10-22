@@ -7,7 +7,14 @@ const TodoListItem = (props) => {
     <li className="todo-list-item">
       <span> {props.name} </span>
 
-      <button className="btn" onClick={props.setAsInValue}>In Progress</button>
+      <button className="btn" onClick={props.setAsInValue}>
+        {
+          props.isInProgress ?
+          "Done"
+          :
+          "In Progress"
+        }
+      </button>
       <button className="btn" onClick={props.removeTask}>Remove</button>
     </li>
   );
@@ -17,7 +24,8 @@ TodoListItem.PropTypes = {
   name: PropTypes.string.isRequired,
   removeTask: PropTypes.func.isRequired,
   setAsInValue: PropTypes.func.isRequired,
-  createdAt: PropTypes.object.isRequired
+  createdAt: PropTypes.object.isRequired,
+  isInProgress: PropTypes.bool.isRequired
 }
 
 export default TodoListItem;

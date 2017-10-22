@@ -15,7 +15,8 @@ const InProgressList = (props) => {
                   name={task.name}
                   removeTask={ () => {props.removeTaskFrom(task.id)} }
                   setAsInValue={ () => {props.setAs("done", task.id)} }
-                  createdAt={task.createdAt} />
+                  createdAt={task.createdAt}
+                  isInProgress={task.isInProgress} />
               );
             } )
           }
@@ -27,7 +28,7 @@ const InProgressList = (props) => {
 InProgressList.PropTypes = {
   tasks: PropTypes.array.isRequired,
   removeTask: PropTypes.func.isRequired,
-  setAs: PropTypes.func.isRequired
+  setAs: PropTypes.func.isRequired,
 }
 
 export default InProgressList;
