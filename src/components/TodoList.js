@@ -15,7 +15,8 @@ const TodoList = (props) => {
               name={task.name}
               createdAt={task.createdAt}
               key={task.id}
-              removeTask={ () => {props.removeTaskFrom(task.id)} } />
+              removeTask={ () => {props.removeTaskFrom(task.id)} }
+              setAsInValue={ () => {props.setAs("progress", task.id)} } />
           );
         })}
 
@@ -26,7 +27,8 @@ const TodoList = (props) => {
 
 TodoList.PropTypes = {
   tasks: PropTypes.array.isRequired,
-  removeTaskFrom: PropTypes.func.isRequired
+  removeTaskFrom: PropTypes.func.isRequired,
+  setAs: PropTypes.func.isRequired
 }
 
 export default TodoList;

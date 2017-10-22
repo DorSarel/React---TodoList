@@ -21,7 +21,7 @@ class App extends Component {
   getActiveTasks = () => {
     return (
       this.state.tasks.reduce((total, task) => {
-        return task.isDone ? total : total + 1
+        return task.isInProgress ? total + 1 : total
       }, 0)
     );
   }
@@ -52,6 +52,14 @@ class App extends Component {
     });
   }
 
+  setAs = (toList, id) => {
+    if (toList === "progress") {
+      this.setInProgress(id);
+    } else {
+      this.setAsCompleteId(id);
+    }
+  }
+
   setAsCompleteId = (id) => {
     this.setState({
       tasks: this.state.tasks.map((task) => {
@@ -59,6 +67,22 @@ class App extends Component {
           return {
             ...task,
             isDone: !task.isDone
+          };
+        }
+
+        return task;
+      })
+    });
+  }
+
+  setInProgress = (id) => {
+    this.setState({
+      tasks: this.state.tasks.map((task) => {
+        if (id === task.id){
+          return {
+            ...task,
+            isTodo: false,
+            isInProgress: true
           };
         }
 
@@ -90,7 +114,7 @@ class App extends Component {
 
         <ListContainer
           tasks={this.state.tasks}
-          setAsCompleteId={this.setAsCompleteId}
+          setAs={this.setAs}
           removeTaskFrom={this.removeTaskFrom} />
 
       </div>

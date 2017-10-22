@@ -9,10 +9,13 @@ const ListContainer = (props) => {
     <div className="list-container">
       <TodoList
         tasks={props.tasks}
-        setAsComplete={props.setAsCompleteId}
-        removeTaskFrom={props.removeTaskFrom} />
+        removeTaskFrom={props.removeTaskFrom}
+        setAs={props.setAs} />
 
-      <InProgressList />
+      <InProgressList
+        tasks={props.tasks}
+        removeTaskFrom={props.removeTaskFrom}
+        setAs={props.setAs} />
 
       <DoneList />
 
@@ -22,8 +25,8 @@ const ListContainer = (props) => {
 
 ListContainer.PropTypes = {
   tasks: PropTypes.array.isRequired,
-  setAsCompleteId: PropTypes.func.isRequired,
-  removeTaskFrom: PropTypes.func.isRequired
+  removeTaskFrom: PropTypes.func.isRequired,
+  setAs: PropTypes.func.isRequired
 }
 
 export default ListContainer;

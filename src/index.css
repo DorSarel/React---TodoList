@@ -20,7 +20,7 @@ body {
 .container {
   width: 100%;
   max-width: 900px;
-  margin: 200px auto;
+  margin: 50px auto;
 }
 
 header {
@@ -65,14 +65,13 @@ header > h2 {
   flex-wrap: wrap;
 
   padding: 10px 8px 10px 10px;
-  margin-bottom: 5px;
-
   border-bottom: 1px solid rgba(0, 0, 0, .3);
 }
 
 .todo-list-item > span {
   flex: 1 1 100%;
   margin-bottom: 30px;
+  font-size: 1.125em;
 }
 
 .todo-list-item_date {
@@ -100,11 +99,17 @@ input:focus {
 }
 
 .btn {
+  letter-spacing: 1px;
   border-radius: 10px;
   outline: none;
-  background: white;
+  background: rgba(255, 255, 255, .9);
   border: none;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, .4);
   padding: 10px 8px;
   margin-right: 5px;
+  transition: .09s linear;
+}
+
+.btn:active {
+  transform: translateY(2px);
 }

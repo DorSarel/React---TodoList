@@ -7,8 +7,8 @@ const TodoListItem = (props) => {
     <li className="todo-list-item">
       <span> {props.name} </span>
 
-      <button className="btn">In Progress</button>
-      <button className="btn">Remove</button>
+      <button className="btn" onClick={props.setAsInValue}>In Progress</button>
+      <button className="btn" onClick={props.removeTask}>Remove</button>
     </li>
   );
 }
@@ -16,6 +16,7 @@ const TodoListItem = (props) => {
 TodoListItem.PropTypes = {
   name: PropTypes.string.isRequired,
   removeTask: PropTypes.func.isRequired,
+  setAsInValue: PropTypes.func.isRequired,
   createdAt: PropTypes.object.isRequired
 }
 
