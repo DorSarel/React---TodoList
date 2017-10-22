@@ -13,10 +13,12 @@ const InProgressList = (props) => {
               return (
                 <TodoListItem
                   name={task.name}
+                  key={task.id}
                   removeTask={ () => {props.removeTaskFrom(task.id)} }
                   setAsInValue={ () => {props.setAs("done", task.id)} }
                   createdAt={task.createdAt}
-                  isInProgress={task.isInProgress} />
+                  isInProgress={task.isInProgress}
+                  isDone={task.isDone} />
               );
             } )
           }

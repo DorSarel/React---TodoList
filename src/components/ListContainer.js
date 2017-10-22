@@ -17,7 +17,9 @@ const ListContainer = (props) => {
         removeTaskFrom={props.removeTaskFrom}
         setAs={props.setAs} />
 
-      <DoneList />
+      <DoneList
+        tasks={props.tasks}
+        removeTaskFrom={props.removeTaskFrom} />
 
     </div>
   );
@@ -26,7 +28,7 @@ const ListContainer = (props) => {
 ListContainer.PropTypes = {
   tasks: PropTypes.array.isRequired,
   removeTaskFrom: PropTypes.func.isRequired,
-  setAs: PropTypes.func.isRequired
+  setAs: PropTypes.func.isRequired,
 }
 
 export default ListContainer;

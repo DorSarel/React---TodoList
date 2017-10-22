@@ -66,7 +66,8 @@ class App extends Component {
         if (id === task.id) {
           return {
             ...task,
-            isDone: !task.isDone
+            isInProgress: false,
+            isDone: true
           };
         }
 
