@@ -12,10 +12,60 @@ class App extends Component {
 
   lastTaskId = 0;
 
+  componentDidMount = () => {
+    if(typeof(Storage) !== "undefined") {
+      if (localStorage.length > 0) {
+        const taskFromStorage = [];
+        for(let index = 0; index < localStorage.length; index++){
+          let taskObj = JSON.parse(localStorage.getItem(localStorage.key(index)));
+          taskFromStorage.unshift(taskObj);
+        }
+
+        this.setState({
+          tasks: taskFromStorage
+        });
+      }
+    }
+  }
+
   newTaskId = () => {
     const id = this.lastTaskId;
     this.lastTaskId += 1;
     return id;
+  }
+
+  saveTaskObjToLocalStorge = (id) => {
+    const taskObj = {
+      name: this.state.pendingTask,
+      isTodo: true,
+      isInProgress: false,
+      isDone: false,
+      createdAt: Date.now(),
+      id
+    }
+
+    localStorage.setItem(id, JSON.stringify(taskObj));
+  }
+
+  updateLocalStorage = (id, task, isInProgress=true) => {
+    if (isInProgress) {
+      let updatedTaskObj = {
+        ...task,
+        isTodo: false,
+        isInProgress: true
+      }
+
+      localStorage.setItem(id, JSON.stringify(updatedTaskObj));
+
+    } else {
+      let updatedTaskObj = {
+        ...task,
+        isInProgress: false,
+        isDone: true
+      }
+
+      localStorage.setItem(id, JSON.stringify(updatedTaskObj));
+    }
   }
 
   getActiveTasks = () => {
@@ -36,6 +86,9 @@ class App extends Component {
     e.preventDefault();
     const id = this.newTaskId();
 
+    this.saveTaskObjToLocalStorge(id);
+
+    //adding the new task
     this.setState({
       pendingTask: "",
       tasks: [
@@ -64,6 +117,7 @@ class App extends Component {
     this.setState({
       tasks: this.state.tasks.map((task) => {
         if (id === task.id) {
+          this.updateLocalStorage(id, task, false);
           return {
             ...task,
             isInProgress: false,
@@ -80,6 +134,7 @@ class App extends Component {
     this.setState({
       tasks: this.state.tasks.map((task) => {
         if (id === task.id){
+          this.updateLocalStorage(id, task, true);
           return {
             ...task,
             isTodo: false,
@@ -93,6 +148,8 @@ class App extends Component {
   }
 
   removeTaskFrom = (id) => {
+    localStorage.removeItem(id);
+
     this.setState({
       tasks: this.state.tasks.filter((task) => {
         return task.id !== id;
